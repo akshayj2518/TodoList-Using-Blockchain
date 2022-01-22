@@ -22,4 +22,26 @@ contract('TodoList', (accounts) => {
     assert.equal(taskCount.toNumber(), 1)
   })
 
+  it('created tasks', async () =>{
+
+    const result = await this.todoList.createTask('Read atleast 30 pages')
+    const taskCount = await this.todoList.taskCount()
+    assert.equal(taskCount,2)
+    const event = result.logs[0].args
+    assert.equal(event.id.toNumber(),taskCount)
+    assert.equal(event.content,'Read atleast 30 pages')
+    assert.equal(event.completed,false)
+  })
+
+  it('completed tasks', async () =>{
+
+    const result = await this.todoList.toggleTask(1)
+    const taskCount = await this.todoList.taskCount()
+    assert.equal(taskCount,2)
+    const event = result.logs[0].args
+    assert.equal(event.id.toNumber(),taskCount)
+    assert.equal(event.content,'Read atleast 30 pages')
+    assert.equal(event.completed,false)
+  })
+
   })

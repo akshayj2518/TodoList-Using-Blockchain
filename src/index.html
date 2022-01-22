@@ -18,6 +18,9 @@
     <![endif]-->
 
     <style>
+      body{
+        background-color: #f2f2f2;
+      }
       main {
         margin-top: 60px;
       }
@@ -41,8 +44,9 @@
       }
     </style>
   </head>
-  <body>
-    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+  <body >
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow-lg">
       <a class="navbar-brand col-sm-3 col-md-2 mr-0" href=# target="_blank">Akshay Marwadkar | Todo List</a>
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap d-none d-sm-none d-sm-block">
@@ -50,6 +54,8 @@
         </li>
       </ul>
     </nav>
+
+    <div class="container m-5 p-2 rounded mx-auto bg-light shadow-lg" >
     <div class="container-fluid">
       <div class="row">
         <main role="main" class="col-lg-12 d-flex justify-content-center">
@@ -57,10 +63,10 @@
             <p class="text-center">Loading...</p>
           </div>
           <div id="content">
-         <!-- <form onSubmit="App.createTask(); return false;">
+         <form onSubmit="App.createTask(); return false;">
               <input id="newTask" type="text" class="form-control" placeholder="Add task..." required>
               <input type="submit" hidden="">
-            </form> -->
+            </form>
             <ul id="taskList" class="list-unstyled">
               <div class="taskTemplate" class="checkbox" style="display: none">
                 <label>
@@ -75,7 +81,7 @@
         </main>
       </div>
     </div>
-
+    </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

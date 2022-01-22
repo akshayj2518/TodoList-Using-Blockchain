@@ -28,6 +28,7 @@ App = {
         method: 'eth_requestAccounts'
       })
       App.account = accounts[0]
+      web3Provider.eth.defaultAccount = App.account
       // console.log(App.account)
     } catch (error) {
       if (error.code === 4001) {
@@ -96,24 +97,35 @@ App = {
           $newTaskTemplate.find('input')
             .prop('name', taskId)
             .prop('checked', taskCompleted)
-          // .on('click', App.toggleCompleted)
+            .on('click', App.toggleCompleted)
 
           if (taskCompleted) {
             $('#completedTaskList').append($newTaskTemplate)
           } else {
             $('#taskList').append($newTaskTemplate)
           }
-       $newTaskTemplate.show()
+          $newTaskTemplate.show()
         });
-
-
     }
+  },
+
+  createTask: async () => {
+    App.setLoading(true)
+    const content = $('#newTask').val()
+    await App.todoList.createTask(content)
+    window.location.reload()
+  },
+
+  toggleCompleted: async (e) => {
+    App.setLoading(true)
+    const taskId = e.target.name
+    await App.todoList.toggleCompleted(taskId)
+    window.location.reload()
   }
 
 
 
 }
-
 
 $(() => {
   $(window).load(() => {
